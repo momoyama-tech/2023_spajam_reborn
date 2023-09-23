@@ -27,10 +27,10 @@ public class WebSocketPingResponse
 public class WebSocketManager : MonoBehaviour
 {
     private WebSocket ws;
-    // private string BackendUrl = "http://localhost:3000";
-    private string BackendUrl = "http://174.138.40.241:3000";
-    // private string  WsUrl = "ws://localhost:3000";
-    private string  WsUrl = "ws://174.138.40.241:3000";
+    private string BackendUrl = "http://localhost:3000";
+    // private string BackendUrl = "http://174.138.40.241:3000";
+    private string  WsUrl = "ws://localhost:3000";
+    // private string  WsUrl = "ws://174.138.40.241:3000";
     public Text LobbyCountText;
 
     void Start()
@@ -71,7 +71,7 @@ public class WebSocketManager : MonoBehaviour
             }
 
             WebSocketResponse webSocketResponse = JsonUtility.FromJson<WebSocketResponse>(e.Data);
-            if (webSocketResponse.message == "lobby_init")
+            if (webSocketResponse.message == "lobby_index")
             {
                 context.Post(state => {
                     StartCoroutine(LobbiesIndex());

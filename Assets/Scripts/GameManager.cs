@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        inputFieldYourName.text = PlayerName;
+        inputFieldYourName.text = PlayerPrefs.GetString("PlayerName", "");
     }
 
     public void SwitchLobbyScene()
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        PlayerName = inputFieldYourName.text;
+        PlayerPrefs.SetString("PlayerName", inputFieldYourName.text);
         SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
     }
 }
