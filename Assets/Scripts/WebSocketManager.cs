@@ -27,10 +27,10 @@ public class WebSocketPingResponse
 public class WebSocketManager : MonoBehaviour
 {
     private WebSocket ws;
-    private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "https://spajam2023.tunnelto.dev";
-    private string  WsUrl = "ws://localhost:3000";
-    // private string  WsUrl = "wss://0.tcp.jp.ngrok.io:11337";
+    // private string BackendUrl = "http://localhost:3000";
+    private string BackendUrl = "http://174.138.40.241:3000";
+    // private string  WsUrl = "ws://localhost:3000";
+    private string  WsUrl = "ws://174.138.40.241:3000";
     public Text LobbyCountText;
 
     void Start()
