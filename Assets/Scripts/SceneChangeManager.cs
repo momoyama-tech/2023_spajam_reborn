@@ -24,4 +24,8 @@ public class SceneChangeManager : MonoBehaviour
     {
         SceneManager.LoadScene("History", LoadSceneMode.Single);
     }
+    public void SwitchTitleScene()
+    {
+        SceneManager.LoadScene("Title", LoadSceneMode.Single);
+    }
 }
