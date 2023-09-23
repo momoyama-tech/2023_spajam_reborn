@@ -4,3 +4,4 @@
 
 - yamagumo
 - hinano
+- ayato
