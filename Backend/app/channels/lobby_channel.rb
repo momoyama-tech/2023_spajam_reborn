@@ -9,7 +9,7 @@ class LobbyChannel < ApplicationCable::Channel
 
   def lobbies(data)
     if data['message'] == 'lobby_init'
-      ActionCable.server.broadcast("LobbyChannel", "lobby_init")
+      ActionCable.server.broadcast("LobbyChannel", "lobby_index")
     else
       ActionCable.server.broadcast("LobbyChannel", "continue")
     end
