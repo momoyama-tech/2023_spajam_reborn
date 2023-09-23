@@ -5,3 +5,4 @@
 - yamagumo
 - hinano
 - ayato
+- hide
