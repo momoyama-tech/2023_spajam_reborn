@@ -27,10 +27,10 @@ public class WebSocketPingResponse
 public class WebSocketManager : MonoBehaviour
 {
     private WebSocket ws;
-    private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "https://spajam2023.tunnelto.dev";
-    private string  WsUrl = "ws://localhost:3000";
-    // private string  WsUrl = "wss://spajam2023.tunnelto.dev";
+    // private string BackendUrl = "http://localhost:3000";
+    private string BackendUrl = "https://spajam2023.tunnelto.dev";
+    // private string  WsUrl = "ws://localhost:3000";
+    private string  WsUrl = "wss://spajam2023.tunnelto.dev";
     public Text LobbyCountText;
 
     void Start()
@@ -117,7 +117,7 @@ public class WebSocketManager : MonoBehaviour
             // Debug.Log("lobby_index: " + request.downloadHandler.text);
             Dictionary<string, object> response = Json.Deserialize(request.downloadHandler.text) as Dictionary<string, object>;
             Debug.Log("lobby_index: " + response["userCount"]);
-            // LobbyCountText.text = response["userCount"] as string;
+            LobbyCountText.text = "ただいま " + response["userCount"] .ToString() + "人です";
         }
 
     }
