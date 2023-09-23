@@ -16,7 +16,7 @@ public class SceneChangeManager : MonoBehaviour
     {
         
     }
-    public void SwitcLobbyScene()
+    public void SwitchLobbyScene()
     {
         SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
     }

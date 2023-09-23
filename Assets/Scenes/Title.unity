@@ -624,7 +624,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1695327904}
         m_TargetAssemblyTypeName: SceneChangeManager, Assembly-CSharp
-        m_MethodName: SwitcLobbyScene
+        m_MethodName: SwitchLobbyScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
