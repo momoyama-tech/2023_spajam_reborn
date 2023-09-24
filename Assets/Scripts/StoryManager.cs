@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using MiniJSON;
+using UnityEngine.SceneManagement;
 
 public class StoryManager : MonoBehaviour
 {
@@ -17,10 +18,20 @@ public class StoryManager : MonoBehaviour
     public Text TextGeneButton02;
     public Text TextGeneButton03;
 
-    private string Story = "";
+    public Text TextInputFieldHajike;
+
+    public Text TextCheckCanvas;
+
+    public Button Button01;
+    public Button Button02;
+    public Button Button03;
+
+    public string Story = "";
+
+    private bool aiFlag = false;
 
     private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "http://174.138.40.241:3000";
+    // private string BackendUrl = "http://165.232.131.66:3000";
 
     private IEnumerator GeneStoriesIndex()
     {
@@ -44,7 +55,11 @@ public class StoryManager : MonoBehaviour
 
     private IEnumerator GeneStoriesCreate()
     {
-        UnityWebRequest request = UnityWebRequest.PostWwwForm(BackendUrl + "/api/v1/gene_stories", Story);
+        if (Story == "")
+        {
+            yield return 0;
+        }
+        UnityWebRequest request = UnityWebRequest.PostWwwForm(BackendUrl + "/api/v1/stories", Story);
 
         yield return request.SendWebRequest();
 
@@ -58,6 +73,27 @@ public class StoryManager : MonoBehaviour
         }
     }
 
+    private IEnumerator HajikeStoriesCreate()
+    {
+        Debug.Log(TextInputFieldHajike.text);
+        if (TextInputFieldHajike.text == "")
+        {
+            yield return 0;
+        }
+        UnityWebRequest request = UnityWebRequest.PostWwwForm(BackendUrl + "/api/v1/hajike_stories", TextInputFieldHajike.text);
+
+        yield return request.SendWebRequest();
+
+        if (request.isHttpError || request.isNetworkError)
+        {
+            Debug.Log(request.error);
+        }
+        else
+        {
+            //
+        }
+    }
+
     public void ShowHajikeCanvas()
     {
         GeneHajikeCanvas.SetActive(false);
@@ -68,6 +104,7 @@ public class StoryManager : MonoBehaviour
     {
         GeneHajikeCanvas.SetActive(false);
         GeneCanvas.SetActive(true);
+        aiFlag = true;
         StartCoroutine(GeneStoriesIndex());
     }
 
@@ -76,17 +113,76 @@ public class StoryManager : MonoBehaviour
         GeneCanvas.SetActive(false);
         HajikeCanvas.SetActive(false);
         LoadCanvas.SetActive(true);
-        StartCoroutine(GeneStoriesCreate());
+        if (aiFlag)
+        {
+            StartCoroutine(GeneStoriesCreate());
+        }
+        else
+        {
+            StartCoroutine(HajikeStoriesCreate());
+        }
+        
+    }
+
+    public void ShowLoadHajikeCanvas()
+    {
+        GeneCanvas.SetActive(false);
+        HajikeCanvas.SetActive(false);
+        LoadCanvas.SetActive(true);
+        StartCoroutine(HajikeStoriesCreate());
     }
 
     public void ShowCheckCanvas()
     {
         LoadCanvas.SetActive(false);
         CheckCanvas.SetActive(true);
+        if (aiFlag)
+        {
+            TextCheckCanvas.text = "AI";
+        }
+        else
+        {
+            TextCheckCanvas.text = "Human";
+        }
+        StartCoroutine(DelayCoroutine());
     }
 
     public void  ReGenerateStory()
     {
         StartCoroutine(GeneStoriesIndex());
+    }
+
+    public void OnClickButton01()
+    {
+        Button01.image.color = Color.red;
+        Button02.image.color = Color.white;
+        Button03.image.color = Color.white;
+        Story = Button01.transform.GetComponentInChildren<Text>().text;
+    }
+
+    public void OnClickButton02()
+    {
+        Button01.image.color = Color.white;
+        Button02.image.color = Color.red;
+        Button03.image.color = Color.white;
+        Story = Button02.transform.GetComponentInChildren<Text>().text;
+    }
+
+    public void OnClickButton03()
+    {
+        Button01.image.color = Color.white;
+        Button02.image.color = Color.white;
+        Button03.image.color = Color.red;
+        Story = Button03.transform.GetComponentInChildren<Text>().text;
+    }
+
+    private IEnumerator DelayCoroutine()
+    {
+        transform.position = Vector3.one;
+
+        // 3????
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("Talk", LoadSceneMode.Single);
     }
 }

@@ -28,10 +28,11 @@ public class WebSocketManager : MonoBehaviour
 {
     private WebSocket ws;
     private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "http://174.138.40.241:3000";
+    // private string BackendUrl = "http://165.232.131.66:3000";
     private string  WsUrl = "ws://localhost:3000";
-    // private string  WsUrl = "ws://174.138.40.241:3000";
+    // private string  WsUrl = "ws://165.232.131.66:3000";
     public Text LobbyCountText;
+    public GameObject StoryManager;
 
     void Start()
     {
@@ -59,6 +60,13 @@ public class WebSocketManager : MonoBehaviour
                 var webSocketRequestMessage = new WebSocketRequestMessage("message", "GameChannel", "game", "init");
                 ws.Send(JsonSerializer.Serialize(webSocketRequestMessage));
             }
+            else if (SceneManager.GetActiveScene().name == "Story")
+            {
+                Debug.Log("GameScene");
+                var webSocketRequestSubscribe = new WebSocketRequestSubscribe("subscribe", "LobbyChannel");
+                ws.Send(JsonSerializer.Serialize(webSocketRequestSubscribe));
+                Debug.Log("WebSocket LobbyChannel Subscribe");
+            }
         };
 
         ws.OnMessage += (sender, e) =>
@@ -80,6 +88,12 @@ public class WebSocketManager : MonoBehaviour
             else if (webSocketResponse.message == "continue")
             {
                 Debug.Log("111111");
+            }
+            else if (webSocketResponse.message == "start_talk")
+            {
+                context.Post(state => {
+                    StoryManager.GetComponent<StoryManager>().ShowCheckCanvas();
+                }, e.Data);
             }
         };
 
