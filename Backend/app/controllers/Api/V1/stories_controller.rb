@@ -1,6 +1,7 @@
 class Api::V1::StoriesController < ApplicationController
     def index
-        render json: { status: 'SUCCESS', message: 'Loaded lobbies'}
+        stories = Story.all
+        render json: { status: 'SUCCESS', message: 'Loaded lobbies', story01: stories[0].story, story02: stories[1].story, story03: stories[2].story, story04: stories[3].story}
     end
 
     def create        

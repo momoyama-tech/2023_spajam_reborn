@@ -404,7 +404,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3084\u3068"
+  m_Text: 
 --- !u!222 &60820848
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3084\u3068"
+  m_Text: 
 --- !u!222 &327386165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2231,7 +2231,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3084\u3068"
+  m_Text: 
 --- !u!222 &980355339
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2937,7 +2937,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3084\u3068"
+  m_Text: 
 --- !u!222 &1428116381
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3092,7 +3092,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u3084\u3068"
+  m_Text: 
 --- !u!222 &1631260536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3274,7 +3274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1778545267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3947,7 +3947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2014916344
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,8 +30,8 @@ public class StoryManager : MonoBehaviour
 
     private bool aiFlag = false;
 
-    private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "http://165.232.131.66:3000";
+    // private string BackendUrl = "http://localhost:3000";
+    private string BackendUrl = "http://165.232.131.66:3000";
 
     private IEnumerator GeneStoriesIndex()
     {

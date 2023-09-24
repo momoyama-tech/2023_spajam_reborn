@@ -27,10 +27,10 @@ public class WebSocketPingResponse
 public class WebSocketManager : MonoBehaviour
 {
     private WebSocket ws;
-    private string BackendUrl = "http://localhost:3000";
-    // private string BackendUrl = "http://165.232.131.66:3000";
-    private string  WsUrl = "ws://localhost:3000";
-    // private string  WsUrl = "ws://165.232.131.66:3000";
+    // private string BackendUrl = "http://localhost:3000";
+    private string BackendUrl = "http://165.232.131.66:3000";
+    // private string  WsUrl = "ws://localhost:3000";
+    private string  WsUrl = "ws://165.232.131.66:3000";
     public Text LobbyCountText;
     public GameObject StoryManager;
 
